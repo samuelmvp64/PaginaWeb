@@ -1,0 +1,255 @@
+<html>
+<head>
+
+<title>Proyecto de Internet de las Cosas</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</head>
+ <button type="submit" id="A" class="btn btn-primary">F1</button>
+<button type="submit" id="B" class="btn btn-primary">F2</button>
+<button type="submit" id="C" class="btn btn-primary">F3</button>
+<button type="submit" id="D" class="btn btn-primary">F4</button><br><br>
+</form>
+</div>
+<tr>
+ <button type="submit" id="E" class="btn btn-primary">LUZ 1 ON </button>
+<button type="submit" id="F" class="btn btn-primary">LUZ 1 OFF </button>
+<br><br>
+<button type="submit" id="G" class="btn btn-primary">LUZ 2 ON </button>
+ <button type="submit" id="H" class="btn btn-primary">LUZ 2 OFF </button>
+<br><br>
+<button type="submit" id="I" class="btn btn-primary">LUZ 3 ON </button>
+ <button type="submit" id="J" class="btn btn-primary">LUZ 3 OFF </button>
+   <br><br>
+
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+  <button type="submit" id="getData" class="btn btn-primary">Search data</button>
+<div class="col-md-4">
+ 
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="col-sm-4">
+<table class="table table-striped" id='dataTb3' >
+  <thead>
+    <tr>
+      <th scope="col">Tipo de operacion</th>
+      <th scope="col">Estado registrado </th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Hora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  //Firebase1
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+  import { getDatabase, set, ref ,push, child, onValue, update} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+ const firebaseConfig = {
+    apiKey: "AIzaSyB59jOkFV6hrrPl37H9b9XyWBLLLXQhG0k",
+    authDomain: "database-online-899a2.firebaseapp.com",
+    databaseURL: "https://database-online-899a2-default-rtdb.firebaseio.com",
+    projectId: "database-online-899a2",
+    storageBucket: "database-online-899a2.appspot.com",
+    messagingSenderId: "945246594495",
+    appId: "1:945246594495:web:0120bdfea991d2d603ad0a",
+    measurementId: "G-QVWWXZ5KDC"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  
+  // Get a reference to the database service
+  const database = getDatabase(app);
+
+
+  //Firebase2
+
+
+   // write data
+  A.addEventListener('click',(e) => {
+   
+	const date=new Date().toLocaleDateString();
+	const hour=new Date().getHours();
+	const min=new Date().getMinutes();
+		var time= String(hour)+String(":")+String(min)+String(" hrs");
+		    const userId = push(child(ref(database), 'RED')).key;
+   	
+    set(ref(database, 'RED/' + userId), {
+    Entrada: "U",
+    Fecha: date,
+    Hora: time
+   });
+ 
+  });
+B.addEventListener('click',(e) => {
+   
+	const date=new Date().toLocaleDateString();
+	const hour=new Date().getHours();
+	const min=new Date().getMinutes();
+		var time= String(hour)+String(":")+String(min)+String(" hrs");
+		    const userId = push(child(ref(database), 'RED')).key;
+   	
+    set(ref(database, 'RED/' + userId), {
+    Entrada: "D",
+    Fecha: date,
+    Hora: time
+   });
+  
+  });
+C.addEventListener('click',(e) => {
+     
+	const date=new Date().toLocaleDateString();
+	const hour=new Date().getHours();
+	const min=new Date().getMinutes();
+		var time= String(hour)+String(":")+String(min)+String(" hrs");
+		    const userId = push(child(ref(database), 'RED')).key;
+   	
+    set(ref(database, 'RED/' + userId), {
+    Entrada: "L",
+    Fecha: date,
+    Hora: time
+   });
+  
+  });
+D.addEventListener('click',(e) => {
+    
+	const date=new Date().toLocaleDateString();
+	const hour=new Date().getHours();
+	const min=new Date().getMinutes();
+		var time= String(hour)+String(":")+String(min)+String(" hrs");
+		    const userId = push(child(ref(database), 'RED')).key;
+   	
+    set(ref(database, 'RED/' + userId), {
+    Entrada: "R",
+    Fecha: date,
+    Hora: time
+   });
+
+  });
+
+   // 2nd database
+
+
+  // read data
+
+  getData.addEventListener('click',(e) => {
+
+    $('#dataTb3 td').remove();
+    var font='FOCOS/'
+    var type = "Cambio de estado"; 
+    const dbRef = ref(database, font);
+
+    onValue(dbRef, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+      const childKey = childSnapshot.key;
+      const childData = childSnapshot.val();
+      // ...
+      
+      var row = "<tr><td>" + type + "</td><td>" + childData.Operacion + "</td><td>" + childData.Fecha + "</td><td>" + childData.Hora + "</td></tr>"
+
+
+      $(row).appendTo('#dataTb3');
+      
+      });
+    }, {
+       onlyOnce: true
+    });
+
+
+  });
+</script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+  import { getDatabase, set, ref, update,push,child,onValue } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyC0mzzkN6pXJvpyioaWaaZRIVK6J7Z5-F0",
+    authDomain: "iotmecatronica69.firebaseapp.com",
+    databaseURL: "https://iotmecatronica69-default-rtdb.firebaseio.com",
+    projectId: "iotmecatronica69",
+    storageBucket: "iotmecatronica69.appspot.com",
+    messagingSenderId: "1002068392163",
+    appId: "1:1002068392163:web:28d06ffcac0069ecf36dd6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+  // 2nd database
+E.addEventListener('click',(e) => {
+    
+  
+    update(ref(database, 'ESTADO/'), {
+    LUZ1: "ON"
+   });
+
+  });
+
+F.addEventListener('click',(e) => {
+        update(ref(database, 'ESTADO/' ), {
+     LUZ1: "OFF",
+
+    }); 
+     
+   });
+G.addEventListener('click',(e) => {
+        update(ref(database, 'ESTADO/' ), {
+     LUZ2: "ON",
+
+    });  
+   });
+H.addEventListener('click',(e) => {
+        update(ref(database, 'ESTADO/' ), {
+     LUZ2: "OFF",
+
+    });  
+   });
+I.addEventListener('click',(e) => {
+        update(ref(database, 'ESTADO/' ), {
+     LUZ3: "ON",
+
+    });  
+   });
+J.addEventListener('click',(e) => {
+        update(ref(database, 'ESTADO/' ), {
+     LUZ3: "OFF",
+
+    });  
+   });
+</script>
